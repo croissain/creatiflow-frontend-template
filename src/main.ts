@@ -6,5 +6,5 @@ import { Cursor } from "./components/cursor/cursor";
 const grid = new Grid();
 grid.toggleGrid();
 
-new Cursor();
-// cursor.cursorFunc();
+const cursor = new Cursor();
+cursor.animate();

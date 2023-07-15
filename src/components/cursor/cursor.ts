@@ -3,10 +3,9 @@ export class Cursor {
   protected _cursor: HTMLElement | null;
   constructor() {
     this._cursor = document.getElementById("js-cursor");
-    this.cursorFunc();
   }
 
-  cursorFunc() {
+  animate() {
     document.body.style.cursor = "none";
     const cursor = this._cursor;
     if (!cursor) return;
@@ -28,6 +27,8 @@ export class Cursor {
       height: "1.5rem",
       width: "1.5rem",
       border: "1px solid #B0B0B0",
+      outline: "none",
+      zIndex: "999",
     };
 
     //cursor depend attr
@@ -45,6 +46,7 @@ export class Cursor {
         let cursorSize = currentTarget.getAttribute("data-size");
         let cursorTextColor = currentTarget.getAttribute("data-color");
         let cursorTextSize = currentTarget.getAttribute("data-fontsize")!;
+        let cursorOutline = currentTarget.getAttribute("data-outline");
 
         cursor.classList.add("active");
         const cursorInnerText =
@@ -59,6 +61,9 @@ export class Cursor {
           height: cursorSize,
           width: cursorSize,
           border: "none",
+          outline: `${cursorOutline} solid 1px`,
+          outlineOffset: "-3px",
+          zIndex: "999",
         });
       });
 
